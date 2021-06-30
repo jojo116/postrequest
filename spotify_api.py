@@ -16,17 +16,22 @@ auth_response = requests.post(AUTH_URL,{
   
 })
 
-print(auth_response.status_code)
+#print(auth_response.status_code)
 
 auth_response_data = auth_response.json()
 
-print(auth_response_data)
+#print(auth_response_data)
 
 access_token = auth_response_data['access_token']
 
 headers = {
 
-	'Authorization': 'Bearer {token}'.format(token=access_token)}
+'Authorization': 'Bearer {token}'.format(token=access_token)}
 
 BASE_URL ='https://api.spotify.com/v1/'
+
+artist_id = '2gzWmhOZhDN6gXL49JW9qj'
+
+response = requests.get(BASE_URL + "artists/" + artist_id, headers = headers)
+print(response.json())
 
